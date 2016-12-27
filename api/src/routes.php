@@ -1,7 +1,7 @@
 <?php
 // Routes
 
-$app->get('/[{name}]', function ($request, $response, $args) {
+$app->get('/', function ($request, $response, $args) {
     syslog(LOG_INFO, 'API HOME');
     return 'API DOC HERE';
 });
@@ -19,4 +19,13 @@ $app->group('/hello', function () {
 //	$this->settings['localtable'] = "categories";
 //    $response = $next($request, $response);
 //    return $response;
+});
+
+$app->group('/users', function () {
+    $this->get('', 'UsersController:fetchAll');
+    $this->get('/{id}', 'UsersController:fetch');
+    $this->post('', 'UsersController:create');
+    $this->patch('/{id}', 'UsersController:patch');
+    $this->put('/{id}', 'UsersController:update');
+    $this->delete('/{id}', 'UsersController:delete');
 });

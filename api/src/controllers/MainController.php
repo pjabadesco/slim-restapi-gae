@@ -1,16 +1,12 @@
 <?php
 namespace Controllers;
 
+use PDO;
+
 class MainController {
 
-    protected $ci;
     public $db;
     public $db_rd;
-
-   //Constructor
-   /*public function __construct(ContainerInterface $ci) {
-       $this->ci = $ci;
-   }*/
 
 	public function dbconnect(){        
 		if(!$this->db){		

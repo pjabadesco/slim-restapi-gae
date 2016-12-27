@@ -2,6 +2,10 @@
 
 Slim is the 2nd fastest api server in the planet, next to Phalcon.  
 
+This is a simple skeleton project for Slim 3 that implements a simple REST API. 
+
+Rate Limiter used [https://github.com/akirk/php-ratelimiter]
+
 ## Main specs
 - Uses syslog for Google compatible logging. syslog(LOG_INFO, 'Authorized access'); / syslog(LOG_WARNING, "Unauthorized access");
 - Specially oriented to develop Restful APIs using JSON
