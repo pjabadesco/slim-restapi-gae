@@ -1,37 +1,41 @@
-## Welcome to GitHub Pages
+## Setting up Slim Framework for REST API
 
-You can use the [editor on GitHub](https://github.com/pjabadesco/slim-restapi/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+Here is how i do it
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Step 1 - run the root of your new project
+`composer require slim/slim "^3.0"`
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
+### Step 2 - Edit composer.json
 ```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+{
+    "require": {
+        "slim/slim": "^3.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Controllers\\": "src/controllers/"
+        }
+    },
+    "scripts": {
+        "start": "php -S 0.0.0.0:8081 -t public public/index.php",
+        "test": "phpunit"
+    }
+}
+### Step 3 - run in root
+`composer install`
 ```
+### Step 4 - Create Folders/Files (see files in this git)
+```markdown
+public\
+public\index.php
+src\
+src\controllers\
+src\dependencies.php
+src\middlewares.php
+src\routes.php
+src\settings.php
+templates\
+templates\index.phtml
+```
+### Step 5 - 
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/pjabadesco/slim-restapi/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
