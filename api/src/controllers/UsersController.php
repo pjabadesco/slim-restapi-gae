@@ -14,7 +14,6 @@ class UsersController
 
     public function create($request, $response, $args) 
     {
-		$this->main = new Main();
         $this->main->dbconnect();
 
         $main->db->beginTransaction();
@@ -48,7 +47,6 @@ class UsersController
 
     public function fetchAll($request, $response, $args) 
     {
-        $this->main = new Main();
         $this->main->dbconnect();
 
         try {        
