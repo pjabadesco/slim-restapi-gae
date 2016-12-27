@@ -9,9 +9,16 @@ $app->add(function ($request, $response, $next) {
                             ->withHeader('X-Powered-By', $this->settings['PoweredBy']);
         $rateLimiter->limitRequestsInMinutes($this->settings['api_rate_limiter']['requests'], $this->settings['api_rate_limiter']['inmins']);
         return $next($request,$responsen); 
-    } catch (Exception $e) {
+    } catch (Libs\RateExceededException $e) {
         return $responsen->withStatus(429)
                 ->withHeader('RateLimit-Limit', $this->settings['api_rate_limiter']['requests']);                
+    } catch (Exception $e) {
+        if(isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'],'Google App Engine') !== false) {
+            return $responsen->withStatus(404)
+                ->write('Error');            
+        }else{
+            return $response->withStatus(404)
+                ->write($e);
+        }
     }
 });
-
