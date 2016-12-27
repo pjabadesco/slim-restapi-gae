@@ -10,7 +10,7 @@ This is a simple skeleton project for Slim 3 that implements a simple REST API.
 - Specially oriented to develop Restful APIs using JSON
 - API Rate limiter middleware, for throttling excesive requests. [https://github.com/akirk/php-ratelimiter]
 
-Here is how i do it:
+Here is how i did it:
 
 ## Step 1 - run the root of your new project
 `composer require slim/slim "^3.0"`
