@@ -1,8 +1,8 @@
 <?php
-
 namespace Libs;
 
 use Exception;
+
 /*
 Copyright (c) 2013 Alexander Kirk
 http://alexander.kirk.at/
