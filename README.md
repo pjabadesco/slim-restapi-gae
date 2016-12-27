@@ -2,6 +2,17 @@
 
 Slim is the 2nd fastest api server in the planet, next to Phalcon.  
 
+## Main specs
+- Uses syslog for Google compatible logging. syslog(LOG_INFO, 'Authorized access'); / syslog(LOG_WARNING, "Unauthorized access");
+- Specially oriented to develop Restful APIs using JSON
+- Reusable generic Controller and Database access with common CRUD operations
+- No need to define models, database columns for simple database access
+- Supports ordering the resource list /books?order=price
+- Table name given by the resource name / user defined
+- Best practices in HTTP return codes
+- API Rate limiter middleware, for throttling excesive requests
+- oAuth2 from https://github.com/bshaffer/oauth2-server-php
+
 Here is how i do it:
 
 ## Step 1 - run the root of your new project
