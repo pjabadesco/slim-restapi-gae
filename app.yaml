@@ -1,0 +1,32 @@
+runtime: php55
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /phpinfo.php
+  script: phpinfo.php
+
+- url: /api/.*
+  script: api/index.php
+- url: /api
+  script: api/index.php
+
+- url: /(.+)
+  script: public/\1
+- url: /
+  script: public/index.php
+
+skip_files:
+- ^(.*/)?\.zip$
+- ^(.*/)?\.bat$
+- ^(.*/)?\.sh$
+- ^(.*/)?\.md$
+- ng2
+- certs
+- .git
+
+env_variables:
+    CLOUDSQL_CONNECTION_NAME: your-connection-name
+    CLOUDSQL_USER: root
+    CLOUDSQL_PASSWORD: your-cloudsql-user-password
+
