@@ -30,7 +30,7 @@ class UsersController
             return $response->withStatus(200);
         } catch (\PDOException $e) {
             $this->main->db->rollback();
-            return $response->withStatus(404);
+            return $response->withStatus(405)->write($this->main->PDOerror($e));
         };
          
     }
@@ -59,7 +59,7 @@ class UsersController
             $result = $rs->fetch(PDO::FETCH_ASSOC);
             return $response->write(json_encode($result));
         } catch (\PDOException $e) {
-            return $response->withStatus(404);
+            return $response->withStatus(405)->write($this->main->PDOerror($e));
         }
     }
 

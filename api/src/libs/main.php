@@ -38,6 +38,96 @@ class Main {
 		};
 	}
 
+	public function fetchAll($sql_cnt,$sql,$filters,$vals,$page,$rows,$sortField,$sortOrder){
+        try {  
+		    $this->dbconnect();
+
+			$page = (isset($page))?$page:1;
+			$pagesize = (isset($rows))?$rows:25;
+			$start = ($page-1) * $pagesize;
+
+			$filters = json_decode($filters);
+			$filter = '';
+			if(count($filters)>0){
+				foreach( $filters as $key=>$val){
+					switch(@$val->o) {
+						case 'contains':
+							$value = $this->db->quote('%'.$val->v.'%');
+							$filter.= " AND ".$val->f." LIKE $value";
+							break;
+						case 'begins with':
+							$value = $this->db->quote($val->v.'%');
+							$filter.= " AND ".$val->f." LIKE $value";
+							break;
+						case 'ends with':
+							$value = $this->db->quote('%'.$val->v);
+							$filter.= " AND ".$val->f." LIKE $value";
+							break;
+						default:
+							$value = $this->db->quote($val->v);
+							$filter.= " AND ".$val->f." ".$val->o." $value";
+					}
+				}
+			};
+			$filter = str_replace(';','',$filter);
+			//die($filter);
+			if($sortField!='undefined' && $sortField!=''){
+				$sortOrder = (@$sortOrder=='1')?'ASC':'DESC';
+				$order = ' ORDER BY `'.$sortField.'` '.$sortOrder;
+			}else{
+				$order = '';
+			}
+			if($rows>=0){
+				$limit = ' LIMIT '.$start.','.$rows;
+			}else{
+				$limit = '';
+			}
+			//die($sql.$filter.$order.$limit);
+			$rs = $this->db->prepare($sql_cnt.$filter);
+			$rs->execute($vals);
+			$row_rs = $rs->fetch(PDO::FETCH_ASSOC);
+			$rs_totalRows = $row_rs['cnt'];
+
+			$rs = $this->db->prepare($sql.$filter.$order.$limit);
+			$rs->execute($vals);
+			$rs_cnt = $rs->rowCount();
+			$rows = array();
+
+			while($r = $rs->fetch(PDO::FETCH_ASSOC) ) {
+				$rows[] = $r;
+			}
+
+			$embedded = explode('/api/',$_SERVER['REQUEST_URI']);
+			$embedded = $embedded[1];
+			$embedded = explode('?',$embedded);
+			$embedded = $embedded[0];
+			$ret = array(
+                '_embedded' => array(
+                    $embedded => $rows
+                ),
+				'page' => (int) $page,
+				'page_count' => (int) ceil($rs_totalRows/$pagesize),
+				'page_size' => (int) $pagesize,			
+				'total_items' => (int) $rs_totalRows
+            );
+
+			return $ret;			
+
+        } catch (\PDOException $e) {
+            return $e;
+		}
+	}
+
+	public function PDOerror($e) {
+		$errorInfo = explode(':',$e->getMessage());
+		$err = array(
+			'title' => $errorInfo[1]
+			,'detail' => $errorInfo[2]
+			,'status' => 405
+		);
+		return json_encode($err);		
+	}    
+
    public function method1($request, $response, $args) {
         /*if (authorizedUser()) {
         echo '<p>Welcome authorized user</p>';
