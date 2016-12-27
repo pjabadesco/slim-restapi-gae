@@ -2,6 +2,14 @@
 
 use Libs\ratelimiter;
 
+$app->add(function ($req, $res, $next) {
+    $response = $next($req, $res);
+    return $response
+            ->withHeader('Access-Control-Allow-Origin', '*')
+            ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+            ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+});
+
 $app->add(function ($request, $response, $next) {
     $rateLimiter = new RateLimiter(new \Memcache, $_SERVER["REMOTE_ADDR"]);
     try {
