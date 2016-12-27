@@ -40,6 +40,6 @@ templates\
 templates\index.phtml
 ```
 
-### Step 5 - 
-
-s
+### TOOLS
+Run Serve
+`composer start`
