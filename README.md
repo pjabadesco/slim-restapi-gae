@@ -1,6 +1,8 @@
 ## Setting up Slim Framework for REST API
 
-Here is how i do it
+Slim is the 2nd fastest api server in the planet, next to Phalcon.  
+
+Here is how i do it:
 
 ### Step 1 - run the root of your new project
 `composer require slim/slim "^3.0"`
