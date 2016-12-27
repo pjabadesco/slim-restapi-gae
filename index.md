@@ -21,9 +21,11 @@ Here is how i do it
         "test": "phpunit"
     }
 }
+```
+
 ### Step 3 - run in root
 `composer install`
-```
+
 ### Step 4 - Create Folders/Files (see files in this git)
 ```markdown
 public\
@@ -37,5 +39,6 @@ src\settings.php
 templates\
 templates\index.phtml
 ```
+
 ### Step 5 - 
 
