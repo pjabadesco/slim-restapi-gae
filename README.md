@@ -23,7 +23,8 @@ Here is how i do it:
     },
     "autoload": {
         "psr-4": {
-            "Controllers\\": "src/controllers/"
+            "Controllers\\": "src/controllers/",
+            "Libs\\": "src/libs/"
         }
     }
 }
@@ -36,6 +37,9 @@ Here is how i do it:
 ```sh
 api\src\
 api\src\controllers\
+api\src\libs\
+api\src\libs\main.php
+api\src\libs\ratelimiter.php
 api\src\dependencies.php
 api\src\middlewares.php
 api\src\routes.php
