@@ -1,4 +1,4 @@
-## Setting up Slim Framework for REST API
+## Setting up Slim Framework for REST API and Google App Engine + Cloud SQL + memcached
 
 Slim is the 2nd fastest api server in the planet, next to Phalcon.  
 
