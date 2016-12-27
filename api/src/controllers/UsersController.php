@@ -16,9 +16,9 @@ class UsersController
     {
         $this->main->dbconnect();
 
-        $main->db->beginTransaction();
+        $this->main->db->beginTransaction();
         try {
-            $rs = $main->db->prepare("
+            $rs = $this->main->db->prepare("
                 INSERT IGNORE INTO oauth_users(username,email,scope) VALUES(:username,:email,:scope);
             ");
             $rs->execute(array(
@@ -50,7 +50,7 @@ class UsersController
         $this->main->dbconnect();
 
         try {        
-            $rs = $main->db->prepare("
+            $rs = $this->main->db->prepare("
                 SELECT * FROM oauth_users WHERE username LIKE :user_id
             ");
             $rs->execute(array(
