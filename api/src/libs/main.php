@@ -1,9 +1,9 @@
 <?php
-namespace Controllers;
+namespace Libs;
 
 use PDO;
 
-class MainController {
+class Main {
 
     public $db;
     public $db_rd;

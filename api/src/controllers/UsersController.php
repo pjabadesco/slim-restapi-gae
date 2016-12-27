@@ -1,16 +1,16 @@
 <?php
 namespace Controllers;
 
-use Controllers\MainController;
+use Libs\Main;
 use PDO;
 
 class UsersController {
 
     public function create($request, $response, $args) 
     {
-		$main = new MainController();
+		$main = new Main();
         $main->dbconnect();
-        
+
         $main->db->beginTransaction();
         try {
             $rs = $main->db->prepare("
@@ -32,7 +32,7 @@ class UsersController {
    
    public function fetch($request, $response, $args) 
    {
-        $main = new MainController();
+        $main = new Main();
         $main->dbconnect();
 
         try {        

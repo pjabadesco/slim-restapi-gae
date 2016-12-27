@@ -1,6 +1,6 @@
 <?php
 
-use Controllers\ratelimiter;
+use Libs\ratelimiter;
 
 $app->add(function ($request, $response, $next) {
     $rateLimiter = new RateLimiter(new \Memcache, $_SERVER["REMOTE_ADDR"]);
