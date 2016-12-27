@@ -46,3 +46,6 @@ templates\index.phtml
 Run Serve
 
 `composer start`
+`gcloud source repos clone default --project={{YOUR PROJECT ID}}`
+`dev_appserver.py ./app.yaml`
+`gcloud app deploy ./app.yaml --project {{YOUR PROJECT ID}}`
