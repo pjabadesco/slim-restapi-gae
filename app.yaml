@@ -26,7 +26,12 @@ skip_files:
 - .git
 
 env_variables:
-    CLOUDSQL_CONNECTION_NAME: your-connection-name
-    CLOUDSQL_USER: root
-    CLOUDSQL_PASSWORD: your-cloudsql-user-password
-
+  PROD_DSN: mysql:unix_socket=/cloudsql/INSTANCE_CONNECTION_NAME;dbname=DATABASE
+  PROD_USER: root
+  PROD_PASSWORD: ''
+  PRODRD_DSN: mysql:unix_socket=/cloudsql/INSTANCE_CONNECTION_NAME;dbname=DATABASE
+  PRODRD_USER: root
+  PRODRD_PASSWORD: ''
+  DEV_DSN: mysql:unix_socket=/cloudsql/INSTANCE_CONNECTION_NAME;dbname=DATABASE
+  DEV_USER: root
+  DEV_PASSWORD: ''

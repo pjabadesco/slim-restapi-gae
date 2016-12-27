@@ -1,7 +1,7 @@
 <?php
 namespace Controllers;
 
-class NeuralinkController {
+class HelloController {
    protected $ci;
    //Constructor
    /*public function __construct(ContainerInterface $ci) {
@@ -9,6 +9,13 @@ class NeuralinkController {
    }*/
    
    public function method1($request, $response, $args) {
+        /*if (authorizedUser()) {
+        echo '<p>Welcome authorized user</p>';
+        syslog(LOG_INFO, 'Authorized access');
+        } else {
+        echo 'Go away unauthorized user<p />';
+        syslog(LOG_WARNING, "Unauthorized access");
+        }*/
         //your code
         //to access items in the container... $this->ci->get('');
         return 'method1';

@@ -3,6 +3,10 @@
 
 $container = $app->getContainer();
 
-$container['NeuralinkController'] = function ($c) {
-    return new Controllers\NeuralinkController();
+$container['MainController'] = function ($c) {
+    return new Controllers\MainController();
+};
+
+$container['HelloController'] = function ($c) {
+    return new Controllers\HelloController();
 };
