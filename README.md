@@ -46,9 +46,18 @@ api\src\routes.php
 api\src\settings.php
 ```
 
+## Quick Install Guide
+1. download and extract [https://github.com/pjabadesco/slim-restapi-gae/archive/master.zip]
+2. cd api
+3. composer install
+4. cd ..
+5. edit & save app.yaml (put correct environment values)
+5. dev_appserver.py ./app.yaml
+
 ## TOOLS
 `dev_appserver.py ./app.yaml`
 
 `gcloud source repos clone default --project={{YOUR PROJECT ID}}`
 
 `gcloud app deploy ./app.yaml --project {{YOUR PROJECT ID}}`
+
