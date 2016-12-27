@@ -1,11 +1,16 @@
 <?php
 namespace Controllers;
 
-use Libs\Main;
 use PDO;
 
 class DummyController 
 {
+    protected $main;
+
+    public function __construct($main)
+    {
+        $this->main = $main;
+    }
 
     public function create($request, $response, $args) 
     {

@@ -1,15 +1,21 @@
 <?php
 namespace Controllers;
 
-use Libs\Main;
 use PDO;
 
 class UsersController 
 {
+    protected $main;
+
+    public function __construct($main)
+    {
+        $this->main = $main;
+    }
+
     public function create($request, $response, $args) 
     {
-		$main = new Main();
-        $main->dbconnect();
+		$this->main = new Main();
+        $this->main->dbconnect();
 
         $main->db->beginTransaction();
         try {
@@ -21,10 +27,10 @@ class UsersController
                 ,':email' => $fields['email']
                 ,':scope' => 'openid profile email'
             ));
-            $main->db->commit();
+            $this->main->db->commit();
             return $response->withStatus(200);
         } catch (\PDOException $e) {
-            $main->db->rollback();
+            $this->main->db->rollback();
             return $response->withStatus(404);
         };
          
@@ -42,8 +48,8 @@ class UsersController
 
     public function fetchAll($request, $response, $args) 
     {
-        $main = new Main();
-        $main->dbconnect();
+        $this->main = new Main();
+        $this->main->dbconnect();
 
         try {        
             $rs = $main->db->prepare("
