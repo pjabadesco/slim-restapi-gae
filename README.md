@@ -31,7 +31,7 @@ Here is how i did it:
 ```
 
 ## Step 3 - run in root
-`composer install`
+`composer dump-autoload --no-dev -o`
 
 ## Step 4 - Create Folders/Files (see files in this git)
 ```sh
@@ -49,7 +49,7 @@ api\src\settings.php
 ## Quick Install Guide
 1. download and extract [https://github.com/pjabadesco/slim-restapi-gae/archive/master.zip]
 2. cd api
-3. composer install
+3. composer install --no-dev -o
 4. cd ..
 5. edit & save app.yaml (put correct environment values)
 5. dev_appserver.py ./app.yaml
