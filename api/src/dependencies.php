@@ -7,6 +7,10 @@ $container['Main'] = function ($c) {
     return new Libs\Main();
 };
 
+$container['Restrict'] = function ($c) {
+    return new Libs\Restrict($c->get('Main'));
+};
+
 $container['HelloController'] = function ($c) {
     return new Controllers\HelloController($c->get('Main'));
 };

@@ -15,8 +15,10 @@ $app->group('/hello', function () {
 $app->group('/users', function () {
     $this->get('', 'UsersController:fetchAll');
     $this->get('/{id}', 'UsersController:fetch');
-    $this->post('', 'UsersController:create');
-    $this->patch('/{id}', 'UsersController:patch');
-    $this->put('/{id}', 'UsersController:update');
-    $this->delete('/{id}', 'UsersController:delete');
+    $this->post('', 'UsersController:create')->add('Restrict:AccessToken');
+    $this->patch('/{id}', 'UsersController:patch')->add('Restrict:AccessToken');
+    $this->put('/{id}', 'UsersController:update')->add('Restrict:AccessToken');
+    $this->delete('/{id}', 'UsersController:delete')->add('Restrict:AccessToken');
 });
+
+$app->get('/logout', 'Actions\logout');
