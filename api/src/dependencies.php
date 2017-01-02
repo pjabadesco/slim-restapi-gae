@@ -18,3 +18,7 @@ $container['HelloController'] = function ($c) {
 $container['UsersController'] = function ($c) {
     return new Controllers\UsersController($c->get('Main'));
 };
+
+$container['Actions\logout'] = function ($c) {
+    return new Controllers\Actions\logout($c->get('Main'));
+};
