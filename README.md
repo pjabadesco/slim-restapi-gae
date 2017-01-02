@@ -9,6 +9,7 @@ This is a simple skeleton project for Slim 3 that implements a simple REST API.
 - Uses syslog for Google compatible logging. syslog(LOG_INFO, 'Authorized access'); / syslog(LOG_WARNING, "Unauthorized access");
 - Specially oriented to develop Restful APIs using JSON
 - API Rate limiter middleware, for throttling excesive requests. [https://github.com/akirk/php-ratelimiter]
+- Auto Logout on invalid Bearer Token - using middleware on routes `$this->delete('/{id}', 'UsersController:delete')->add('Restrict:AccessToken');`
 
 Here is how i did it:
 
@@ -40,6 +41,7 @@ api\src\controllers\
 api\src\libs\
 api\src\libs\main.php
 api\src\libs\ratelimiter.php
+api\src\libs\restrict.php
 api\src\dependencies.php
 api\src\middlewares.php
 api\src\routes.php
