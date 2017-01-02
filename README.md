@@ -61,3 +61,5 @@ api\src\settings.php
 
 `gcloud app deploy ./app.yaml --project {{YOUR PROJECT ID}}`
 
+every time you make changes in SLIM's routes.php, you must run:
+`composer dump-autoload --no-dev -o`
